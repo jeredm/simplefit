@@ -1,0 +1,27 @@
+[
+	{
+		"name": "swimming",
+		"image": "http://semantic-ui.com/images/avatar/large/elliot.jpg",
+		"color": "red"
+	},
+	{
+		"name": "biking",
+		"image": "http://semantic-ui.com/images/avatar2/large/matthew.png",
+		"color": "blue"
+	},
+	{
+		"name": "running",
+		"image": "http://semantic-ui.com/images/avatar/large/daniel.jpg",
+		"color": "red"
+	},
+	{
+		"name": "weight lifting",
+		"image": "http://semantic-ui.com/images/avatar2/large/matthew.png",
+		"color": "green"
+	},
+	{
+		"name": "skiing",
+		"image": "http://semantic-ui.com/images/avatar/large/daniel.jpg",
+		"color": "red"
+	}
+]

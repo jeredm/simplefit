@@ -1,0 +1,24 @@
+{
+  "name": "simplefit",
+  "description": "A quick and easy fitness tracking application",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "eslint": "^3.7.1",
+    "eslint-plugin-react": "^6.3.0",
+    "react-scripts": "0.6.1"
+  },
+  "dependencies": {
+    "lodash": "^4.16.3",
+    "mongoose": "^4.6.2",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "semantic-ui-react": "^0.54.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
