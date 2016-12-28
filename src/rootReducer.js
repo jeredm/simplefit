@@ -1,7 +1,7 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 
-import flashMessages from './reducers/flashMessages';
+import flashMessages from './reducers/flashMessages'
 
 export default combineReducers({
-	flashMessages
-});
+  flashMessages,
+})

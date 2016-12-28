@@ -4,14 +4,14 @@ import ExerciseGrid from './components/ExerciseGrid'
 import exercises from './exercises.json'
 
 class FitRecordView extends Component {
-	render() {
-		return (
-			<div>
-				<WeeklyProgress />
-				<ExerciseGrid exercises={exercises} />
-			</div>
-		)
-	}
+  render() {
+    return (
+      <div>
+        <WeeklyProgress />
+        <ExerciseGrid exercises={exercises} />
+      </div>
+    )
+  }
 }
 
 export default FitRecordView

@@ -3,37 +3,37 @@ import { Card } from 'semantic-ui-react'
 import _ from 'lodash'
 
 export const parseExercises = (exercises) => {
-	const exerciseCards = []
+  const exerciseCards = []
 
-	_.each(exercises, excercise => {
-		exerciseCards.push({
-			key: excercise.name,
-			color: excercise.color,
-			image: excercise.image,
-	    header: _.startCase(excercise.name)
-	    	// meta: 'Friend',
-	    	// description: 'This is where the desc is',
-	    	// extra: 'extra'
-		})
-	})
+  _.each(exercises, excercise => {
+    exerciseCards.push({
+      key: excercise.name,
+      color: excercise.color,
+      image: excercise.image,
+      header: _.startCase(excercise.name),
+        // meta: 'Friend',
+        // description: 'This is where the desc is',
+        // extra: 'extra'
+    })
+  })
 
-	return exerciseCards
+  return exerciseCards
 }
 
 class ExerciseGrid extends Component {
-	static propTypes = {
-		exercises: PropTypes.array
-	}
+  static propTypes = {
+    exercises: PropTypes.array,
+  }
 
-	render () {
-		const cards = parseExercises(this.props.exercises);
+  render() {
+    const cards = parseExercises(this.props.exercises)
 
-		return (
-			<div>
-				<Card.Group items={cards} stackable />
-			</div>
-		)
-	}
+    return (
+      <div>
+        <Card.Group items={cards} stackable />
+      </div>
+    )
+  }
 }
 
 export default ExerciseGrid
