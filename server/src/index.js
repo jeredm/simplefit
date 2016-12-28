@@ -1,13 +1,11 @@
-import express from 'express';
-import path from 'path';
-import bodyParser from 'body-parser';
+import express from 'express'
+import bodyParser from 'body-parser'
+import teams from './routes/teams'
 
-import users from './routes/users';
+const app = express()
 
-let app = express();
+app.use(bodyParser.json())
 
-app.use(bodyParser.json());
+app.use('/api/teams', teams)
 
-app.use('/api/users', users);
-
-app.listen(8080, () => console.log('Running on localhost:8080'));
+app.listen(8080)
