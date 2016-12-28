@@ -5,12 +5,12 @@ import _ from 'lodash'
 export const parseExercises = (exercises) => {
 	const exerciseCards = []
 
-	_.each(exercises, exercise => {
+	_.each(exercises, excercise => {
 		exerciseCards.push({
-			key: exercise.name,
-			color: exercise.color,
-			image: exercise.image,
-	    	header: _.startCase(exercise.name)
+			key: excercise.name,
+			color: excercise.color,
+			image: excercise.image,
+	    header: _.startCase(excercise.name)
 	    	// meta: 'Friend',
 	    	// description: 'This is where the desc is',
 	    	// extra: 'extra'

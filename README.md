@@ -1,9 +1,13 @@
-This application is a test of semantic-ui-react. 
+This application is a test of semantic-ui-react.
 This is a simple fitness application. The idea is that each user can log one fitness event a day.
 The Fit Record is a sum of all of the activity as well as a progress indicator for the week. Users can be separated into teams to create competition.
-Achievements that can be completed based on the type, or amount, of fitness actvities.
+Achievements that can be completed based on the type, or amount, of fitness activities.
 User accounts will be needed and there may be the need to hide specific activity.
 The Home view can be a place to show current activity for teams, new activity ideas, etc.
+
+Both a server and a client need to be started to run the application. The server is started in the server folder just like the client with `npm start`.
+
+TODO database information
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
@@ -368,7 +372,7 @@ Inside `index.html`, you can use it like this:
 
 Only files inside the `public` folder will be accessible by `%PUBLIC_URL%` prefix. If you need to use a file from `src` or `node_modules`, you’ll have to copy it there to explicitly specify your intention to make this file a part of the build.
 
-When you run `npm run build`, Create React App will substitute `%PUBLIC_URL%` with a correct absolute path so your project works even if you use client-side routing or host it at a non-root URL. 
+When you run `npm run build`, Create React App will substitute `%PUBLIC_URL%` with a correct absolute path so your project works even if you use client-side routing or host it at a non-root URL.
 
 In JavaScript code, you can use `process.env.PUBLIC_URL` for similar purposes:
 

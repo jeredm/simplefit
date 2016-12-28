@@ -3,7 +3,7 @@ import ActivityFeed from './components/ActivityFeed'
 import Challenge from './components/Challenge'
 import { Grid } from 'semantic-ui-react'
 
-export class HomeView extends Component {
+class HomeView extends Component {
 	render() {
 		return (
 			<Grid columns={2}>
@@ -17,3 +17,5 @@ export class HomeView extends Component {
 		)
 	}
 }
+
+export default HomeView
