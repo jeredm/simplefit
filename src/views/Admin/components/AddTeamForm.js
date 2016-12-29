@@ -18,6 +18,11 @@ class AddTeamForm extends React.Component {
     )
   }
 
+  navigateBack = (e) => {
+    e.preventDefault()
+    this.context.router.push('/admin')
+  }
+
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
@@ -34,7 +39,7 @@ class AddTeamForm extends React.Component {
         />
         <Form.Group>
           <Button primary type='submit'>Submit</Button>
-          <Button onClick={() => {this.context.router.push('/admin')}}>Cancel</Button>
+          <Button onClick={this.navigateBack}>Cancel</Button>
         </Form.Group>
       </Form>
     )
