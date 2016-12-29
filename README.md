@@ -1,14 +1,22 @@
-This application is a test of semantic-ui-react.
-This is a simple fitness application. The idea is that each user can log one fitness event a day.
-The Fit Record is a sum of all of the activity as well as a progress indicator for the week. Users can be separated into teams to create competition.
-Achievements that can be completed based on the type, or amount, of fitness activities.
-User accounts will be needed and there may be the need to hide specific activity.
-The Home view can be a place to show current activity for teams, new activity ideas, etc.
+# SimpleFit
+This application is an experiment with semantic-ui-react using react with redux and MongoDB.
+It is a simple fitness application in that each user can log one fitness event a day. Each user tries to reach the minimum number of workouts each week to be eligible for a grand prize at the end of quarter. Length of workout is not the focus of this application as it is about being consistent. Each team can decide what the minimum type for a qualifying workout should be.
+
+## Features
+- Fit Record: Track individual progress throughout the week and for the quarter
+- Teams: Users can participate in a team to see team member progress and compete with team members
+- Activity Feed: The Home page displays activities for teams you participate in
+
+## Ideas
+- Achievements: Maybe users gain achievements for hitting a total number of workouts for a given activity type, workouts in a row, diversity of workouts
+- Team vs Team Competition: Teams compete for the most workouts in a quarter
 
 Both a server and a client need to be started to run the application. The server is started in the server folder just like the client with `npm start`.
 
-TODO database information
+You will need MongoDB installed and running. The database setup is named "simplefit" and should be created when you start the server. This name is set in `config.js`. It can be manually set or use an environment variable.
 
+
+## Boiler Plate for create-react-app is Below:
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.  
