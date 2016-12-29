@@ -9,6 +9,7 @@ class App extends Component {
       <div className='App'>
         <div>
           <Menu>
+            <Menu.Item header>SimpleFit</Menu.Item>
             <Menu.Item as={Link} to='home' activeClassName='active' name='Home' />
             <Menu.Item as={Link} to='fitrecord' activeClassName='active' name='Fit Record' />
             <Menu.Item as={Link} to='team' activeClassName='active' name='Team' />

@@ -31,8 +31,10 @@ class AddTeamForm extends React.Component {
           placeholder='Team Description'
           name='teamDesc'
         />
-
-        <Button primary type='submit'>Submit</Button>
+        <Form.Group>
+          <Button primary type='submit'>Submit</Button>
+          <Button onClick={() => {this.context.router.push('/admin')}}>Cancel</Button>
+        </Form.Group>
       </Form>
     )
   }
