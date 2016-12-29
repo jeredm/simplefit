@@ -11,6 +11,7 @@ It is a simple fitness application in that each user can log one fitness event a
 - Achievements: Maybe users gain achievements for hitting a total number of workouts for a given activity type, workouts in a row, diversity of workouts
 - Team vs Team Competition: Teams compete for the most workouts in a quarter
 
+## Setup
 Both a server and a client need to be started to run the application. The server is started in the server folder just like the client with `npm start`.
 
 You will need MongoDB installed and running. The database setup is named "simplefit" and should be created when you start the server. This name is set in `config.js`. It can be manually set or use an environment variable.
