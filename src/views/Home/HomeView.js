@@ -7,9 +7,9 @@ class HomeView extends Component {
   render() {
     return (
       <Grid columns={2}>
-            <Grid.Column>
+        <Grid.Column>
           <ActivityFeed />
-          </Grid.Column>
+        </Grid.Column>
         <Grid.Column>
           <Challenge />
         </Grid.Column>

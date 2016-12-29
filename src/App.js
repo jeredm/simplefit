@@ -1,14 +1,21 @@
-import React from 'react'
-import NavigationBar from './components/NavigationBar'
-import FlashMessageList from './components/FlashMessageList'
+import React, { Component } from 'react'
+import './App.css'
+import { Menu } from 'semantic-ui-react'
+import { Link } from 'react-router'
 
-class App extends React.Component {
+class App extends Component {
   render() {
     return (
-      <div className='container'>
-        <NavigationBar />
-        <FlashMessageList />
-        {this.props.children}
+      <div className='App'>
+        <div>
+          <Menu>
+            <Menu.Item as={Link} to='home' activeClassName='active' name='Home' />
+            <Menu.Item as={Link} to='fitrecord' activeClassName='active' name='Fit Record' />
+            <Menu.Item as={Link} to='team' activeClassName='active' name='Team' />
+            <Menu.Item as={Link} to='admin' activeClassName='active' name='Admin' />
+          </Menu>
+          {this.props.children}
+        </div>
       </div>
     )
   }
