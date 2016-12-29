@@ -8,8 +8,9 @@ class AddTeamForm extends React.Component {
     this.props.createTeam(formData).then(
       () => {
         this.props.addFlashMessage({
-          type: 'success',
-          text: 'Team added successfully',
+          type: 'info',
+          header: 'Team Created',
+          text: 'You new team has been added!',
         })
         this.context.router.push('/admin')
       },

@@ -10,6 +10,7 @@ export default (state = [], action = {}) => {
         {
           id: shortid.generate(),
           type: action.message.type,
+          header: action.message.header,
           text: action.message.text,
         },
       ]

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './App.css'
 import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router'
+import FlashMessageList from './components/FlashMessageList'
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
             <Menu.Item as={Link} to='team' activeClassName='active' name='Team' />
             <Menu.Item as={Link} to='admin' activeClassName='active' name='Admin' />
           </Menu>
+          <FlashMessageList />
           {this.props.children}
         </div>
       </div>
