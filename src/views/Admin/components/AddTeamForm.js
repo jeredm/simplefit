@@ -26,15 +26,15 @@ class AddTeamForm extends React.Component {
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
-        <Header as='h1'>Add Team</Header>
+        <Header as='h1'>Create a Team</Header>
         <Form.Input
           label='Team Name'
           placeholder='Team Name'
           name='teamname'
         />
         <Form.TextArea
-          label='Team Description'
-          placeholder='Team Description'
+          label='Team Rules'
+          placeholder='How long is each workout? How many workouts per week?'
           name='teamDesc'
         />
         <Form.Group>
