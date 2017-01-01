@@ -4,9 +4,9 @@ import TeamModel from '../models/team'
 const router = express.Router()
 
 router.post('/', (req, res) => {
-  const { teamname, teamDesc } = req.body
+  const { teamName, teamDesc } = req.body
   const team = new TeamModel({
-    name: teamname,
+    name: teamName,
     description: teamDesc,
   })
   team.save()
