@@ -6,23 +6,8 @@ import { Message } from 'semantic-ui-react'
 class AddTeamForm extends React.Component {
   state = { errors: {} }
 
-  validateInput(data) {
-    const errors = {}
-
-    if (_.isEmpty(data.teamName)) {
-      errors.teamName = 'Team Name is a required field'
-    }
-
-    return {
-      errors,
-      isValid: _.isEmpty(errors),
-    }
-  }
-
   renderErrorMessages = () => {
-    const messages = _.map(this.state.errors, (message) => {
-      return message
-    })
+    const messages = _.values(this.state.errors)
     if (!_.isEmpty(messages)) {
       return (
         <div>
@@ -36,35 +21,89 @@ class AddTeamForm extends React.Component {
     }
   }
 
-  isValid = (formData) => {
-    const { errors, isValid } = this.validateInput(formData)
-
-    if (!isValid) {
-      this.setState({ errors })
-    }
-    return isValid
-  }
-
   handleSubmit = (e, formData) => {
     e.preventDefault()
-    if (this.isValid(formData)) {
-      this.setState(formData)
-      this.props.createTeam(formData).then(
-        () => {
-          this.props.addFlashMessage({
-            type: 'info',
-            header: 'Team Created',
-            text: 'You new team has been added!',
-          })
-          this.context.router.push('/admin')
-        },
-        ({ data }) => this.setState({ errors: data })
-      )
+    this.isValid(formData).then(res => {
+      if (res === true) {
+        this.setState(formData)
+        this.props.createTeam(formData).then(
+          () => {
+            this.props.addFlashMessage({
+              type: 'info',
+              header: 'Team Created',
+              text: 'You new team has been added!',
+            })
+            this.context.router.push('/admin')
+          },
+          ({ data }) => {
+            this.setState({ errors: data })
+          }
+        )
+        .catch(err => {
+          this.setState({ errors: err })
+        })
+      }
+    })
+    .catch(({ err }) => {
+      this.setState({ errors: err })
+    })
+  }
+
+  isValid = (formData) => {
+    return (
+      new Promise((resolve, reject) => {
+        const { errors, isValid } = this.validateInput(formData)
+        if (!isValid) {
+          this.setState({ errors })
+          return resolve(false)
+        }
+        this.checkNameExists(formData).then(errs => {
+          this.setState(errs)
+          resolve(_.isEmpty(errs.errors))
+        })
+        .catch(err => {
+          this.setState({ errors: err.error })
+          reject(err)
+        })
+      })
+    )
+  }
+
+  validateInput = (data) => {
+    const errors = {}
+    if (_.isEmpty(data.teamName)) {
+      errors.teamName = 'Team Name is a required field'
     }
+    return {
+      errors,
+      isValid: _.isEmpty(errors),
+    }
+  }
+
+  checkNameExists = (formData) => {
+    return (
+      new Promise((resolve, reject) => {
+        const teamName = formData.teamName
+        const errors = {}
+        if (teamName !== '') {
+          this.props.getTeam(teamName).then(res => {
+            if (!_.isEmpty(res.data.team)) {
+              errors.teamName = 'The team is already in use'
+            }
+            resolve({ errors })
+          })
+          .catch(err => {
+            errors.teamName = err
+            reject({ errors })
+          })
+        }
+      })
+    )
   }
 
   navigateBack = (e) => {
     e.preventDefault()
+    this.setState({ errors: {} })
     this.context.router.push('/admin')
   }
 
@@ -100,6 +139,7 @@ class AddTeamForm extends React.Component {
 
 AddTeamForm.propTypes = {
   createTeam: React.PropTypes.func.isRequired,
+  getTeam: React.PropTypes.func.isRequired,
   addFlashMessage: React.PropTypes.func,
 }
 

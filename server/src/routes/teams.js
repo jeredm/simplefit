@@ -15,8 +15,9 @@ router.post('/', (req, res) => {
 })
 
 router.get('/:teamname', (req, res) => {
-  TeamModel.find(req.params.teamname, 'name description')
-  .then(team => res.json({ team }))
+  TeamModel.find({ name: req.params.teamname }, 'name description')
+    .then(team => res.json({ team }))
+    .catch(err => res.status(500).json({ error: err }))
 })
 
 export default router
