@@ -18,8 +18,8 @@ class TeamRow extends Component {
 
 TeamRow.propTypes = {
   team: PropTypes.shape({
-    name: PropTypes.string.isRequired,
     description: PropTypes.string,
+    name: PropTypes.string.isRequired,
   }).isRequired,
 }
 

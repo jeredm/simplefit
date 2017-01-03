@@ -11,3 +11,9 @@ export function getTeam(teamName) {
     return axios.get(`/api/team/${teamName}`)
   }
 }
+
+export function getTeams() {
+  return dispatch => {
+    return axios.get('/api/teams')
+  }
+}
