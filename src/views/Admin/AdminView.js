@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import TeamListPanel from './components/TeamListPanel'
-import { Button, Header } from 'semantic-ui-react'
-import { Link } from 'react-router'
+import TeamTable from './components/TeamTable'
+import { Header } from 'semantic-ui-react'
 import FlashMessageList from '../../components/FlashMessageList'
 
 class AdminView extends Component {
@@ -10,8 +9,7 @@ class AdminView extends Component {
       <div>
         <Header as='h1'>Setup</Header>
         <FlashMessageList />
-        <Button as={Link} to='admin/team'>Add a New Team</Button>
-        <TeamListPanel />
+        <TeamTable />
       </div>
     )
   }
