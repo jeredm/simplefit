@@ -23,80 +23,62 @@ class AddTeamForm extends React.Component {
 
   handleSubmit = (e, formData) => {
     e.preventDefault()
-    this.isValid(formData).then(res => {
-      if (res === true) {
+    this.isValid(formData)
+      .then(() => {
         this.setState(formData)
-        this.props.createTeam(formData).then(
-          () => {
-            this.props.addFlashMessage({
-              type: 'info',
-              header: 'Team Created',
-              text: 'You new team has been added!',
-            })
-            this.context.router.push('/admin')
-          },
-          ({ data }) => {
-            this.setState({ errors: data })
-          }
-        )
-        .catch(err => {
-          this.setState({ errors: err })
+        this.props.createTeam(formData)
+      })
+      .then(() => {
+        this.props.addFlashMessage({
+          type: 'info',
+          header: 'Team Created',
+          text: 'You new team has been added!',
         })
-      }
-    })
-    .catch(({ err }) => {
-      this.setState({ errors: err })
-    })
+        this.context.router.push('/admin')
+      })
+      .catch(err => { this.setState({ errors: err }) })
   }
 
   isValid = (formData) => {
     return (
       new Promise((resolve, reject) => {
-        const { errors, isValid } = this.validateInput(formData)
-        if (!isValid) {
-          this.setState({ errors })
-          return resolve(false)
-        }
-        this.checkNameExists(formData).then(errs => {
-          this.setState(errs)
-          resolve(_.isEmpty(errs.errors))
-        })
-        .catch(err => {
-          this.setState({ errors: err.error })
-          reject(err)
-        })
+        this.validateInput(formData)
+          .then(() => { return this.checkNameExists(formData) })
+          .then(() => { return resolve(true) })
+          .catch(err => { return reject(err) })
       })
     )
   }
 
   validateInput = (data) => {
     const errors = {}
-    if (_.isEmpty(data.teamName)) {
-      errors.teamName = 'Team Name is a required field'
-    }
-    return {
-      errors,
-      isValid: _.isEmpty(errors),
-    }
+    return (
+      new Promise((resolve, reject) => {
+        if (_.isEmpty(data.teamName)) {
+          errors.teamName = 'Team Name is a required field'
+          reject(errors)
+        }
+        return resolve(true)
+      })
+    )
   }
 
   checkNameExists = (formData) => {
+    const errors = {}
     return (
       new Promise((resolve, reject) => {
-        const teamName = formData.teamName
-        const errors = {}
-        if (teamName !== '') {
-          this.props.getTeam(teamName).then(res => {
+        this.props.getTeam(formData.teamName)
+          .then(res => {
             if (!_.isEmpty(res.data.team)) {
               errors.teamName = 'The team is already in use'
+              return reject(errors)
             }
-            resolve({ errors })
+            return resolve(false)
           })
           .catch(err => {
-            errors.teamName = err
-            reject({ errors })
+            errors.teamName = err.message
+            return reject(errors)
           })
-        }
       })
     )
   }
