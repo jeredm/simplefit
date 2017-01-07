@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Elliot Jones",
+    "image": "http://semantic-ui.com/images/avatar/large/elliot.jpg",
+    "exercises": "10"
+  },
+  {
+    "name": "Jenny Smith",
+    "image": "http://semantic-ui.com/images/avatar/large/jenny.jpg",
+    "exercises": "20"
+  },
+  {
+    "name": "Matthew Adams",
+    "image": "http://semantic-ui.com/images/avatar2/large/matthew.png",
+    "exercises": "1"
+  },
+  {
+    "name": "Daniel Clark",
+    "image": "http://semantic-ui.com/images/avatar/large/daniel.jpg",
+    "exercises": "3"
+  },
+  {
+    "name": "Molly Simpson",
+    "image": "http://semantic-ui.com/images/avatar2/large/molly.png",
+    "exercises": "8"
+  },
+  {
+    "name": "Steve Johns",
+    "image": "http://semantic-ui.com/images/avatar/large/steve.jpg",
+    "exercises": "17"
+  }
+]
