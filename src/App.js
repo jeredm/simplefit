@@ -14,6 +14,7 @@ class App extends Component {
             <Menu.Item as={Link} to='fitrecord' activeClassName='active' name='Fit Record' />
             <Menu.Item as={Link} to='team' activeClassName='active' name='Team' />
             <Menu.Item as={Link} to='admin' activeClassName='active' name='Admin' />
+            <Menu.Item as={Link} to='prizes' activeClassName='active' name='Prizes' />
           </Menu>
           {this.props.children}
         </div>
