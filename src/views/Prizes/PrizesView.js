@@ -10,7 +10,7 @@ class PrizesView extends Component {
         <Header as='h1'>Prizes</Header>
         <p>
           Click the button below to choose a prize winner! Each person gets one
-          chance to win for each excercise completed. Good luck!
+          chance to win for each exercise completed. Good luck!
         </p>
         <PrizeGrid users={users} />
       </div>

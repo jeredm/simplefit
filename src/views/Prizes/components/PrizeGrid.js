@@ -54,7 +54,7 @@ class PrizeGrid extends Component {
   buildIcon = (excercises) => {
     return (
       <Label size='large'>
-        <Icon name='heartbeat' />{excercises} Excercises Completed
+        <Icon name='heartbeat' />{excercises} Exercises Completed
       </Label>
     )
   }
