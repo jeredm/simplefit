@@ -8,7 +8,10 @@ class PrizesView extends Component {
     return (
       <div>
         <Header as='h1'>Prizes</Header>
-        <p>TODO: Experiment with a raffle system. This may go into the Admin area later</p>
+        <p>
+          Click the button below to choose a prize winner! Each person gets one
+          chance to win for each excercise completed. Good luck!
+        </p>
         <PrizeGrid users={users} />
       </div>
     )
