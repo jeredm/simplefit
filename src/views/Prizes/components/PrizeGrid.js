@@ -12,7 +12,7 @@ class PrizeGrid extends Component {
       shuffle: 0,
       winner: '',
       remaining: this.props.users,
-      maxShuffle: 30,
+      maxShuffle: 20,
       shuffling: false,
     }
   }
@@ -66,7 +66,7 @@ class PrizeGrid extends Component {
       if (shuffleCount === 1) {
         winner = this.chooseWinner()
       }
-      window.setTimeout(() => { this.shuffle() }, this.throttleTimeout(shuffleCount))
+      window.setTimeout(() => {this.shuffle()}, this.throttleTimeout(shuffleCount))
       this.setState({
         cards: _.shuffle(this.state.cards),
         shuffle: shuffleCount,
@@ -74,12 +74,12 @@ class PrizeGrid extends Component {
         shuffling: true,
       })
     } else {
-      this.setState({ shuffle: 0, shuffling: false })
+      this.setState({ cards: _.shuffle(this.state.cards), shuffle: 0, shuffling: false })
     }
   }
 
   throttleTimeout = (suffleCount) => {
-    const throttle = [150, 300, 450, 700]
+    const throttle = [150, 300, 450, 600]
     const max = this.state.maxShuffle
     const portion = max / 4
     let index = 1
@@ -89,7 +89,7 @@ class PrizeGrid extends Component {
       }
       index ++
     }
-    return throttle[index]
+    return throttle[index - 1]
   }
 
   buildWinnerLabel = () => {
