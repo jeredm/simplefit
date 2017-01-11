@@ -8,6 +8,7 @@ class PrizeGrid extends Component {
     const cards = this.parseExercises(this.props.users)
     this.state = {
       cards,
+      allCards: cards.slice(0),
       enterLeaveAnimation: 'accordianVertical',
       shuffle: 0,
       winner: '',
@@ -47,7 +48,6 @@ class PrizeGrid extends Component {
     for (let i = 0; i < 50; i ++) {
       winners = _.shuffle(winners)
     }
-
     return winners[0]
   }
 
@@ -61,21 +61,69 @@ class PrizeGrid extends Component {
 
   shuffle = () => {
     const shuffleCount = this.state.shuffle + 1
+    let cards = this.state.cards
     if (shuffleCount < this.state.maxShuffle) {
       let winner = this.state.winner
+      const allCards = this.state.allCards
       if (shuffleCount === 1) {
         winner = this.chooseWinner()
+        if (cards.length === 1) {
+          const lastWinner = cards[0]
+          allCards.splice(allCards.indexOf(lastWinner), 1)
+          cards = allCards.slice(0)
+        }
       }
+      cards = this.reduceOptions(shuffleCount, cards)
       window.setTimeout(() => {this.shuffle()}, this.throttleTimeout(shuffleCount))
       this.setState({
-        cards: _.shuffle(this.state.cards),
+        cards: _.shuffle(cards),
+        allCards,
         shuffle: shuffleCount,
         winner,
         shuffling: true,
       })
     } else {
-      this.setState({ cards: _.shuffle(this.state.cards), shuffle: 0, shuffling: false })
+      const winningCard = this.selectWinner()
+      const remainingOld = this.state.remaining
+      const remaining = []
+      for (let i = 0; i < remainingOld.length; i++) {
+        if (remainingOld[i].name !== winningCard[0].key) {
+          remaining.push(remainingOld[i])
+        }
+      }
+      this.setState({ cards: winningCard, remaining, shuffle: 0, shuffling: false })
     }
+  }
+
+  selectWinner = () => {
+    for (let i = 0; i < 4; i++) {
+      if (this.state.cards[i].key === this.state.winner) {
+        return [this.state.cards[i]]
+      }
+    }
+    return [this.state.cards[0]]
+  }
+
+  reduceOptions = (shuffleCount, cards) => {
+    if (shuffleCount === this.state.maxShuffle - 4) {
+      const reducedCards = []
+      let winningCard
+      cards.forEach(card => {
+        if (card.key === this.state.winner) {
+          winningCard = card
+        }
+      })
+      reducedCards.push(winningCard)
+      let i = 0
+      while (reducedCards.length < 3 && i < cards.length) {
+        if (cards[i] !== winningCard) {
+          reducedCards.push(cards[i])
+        }
+        i ++
+      }
+      return reducedCards
+    }
+    return cards
   }
 
   throttleTimeout = (suffleCount) => {
