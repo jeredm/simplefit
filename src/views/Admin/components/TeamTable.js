@@ -57,40 +57,42 @@ class TeamTable extends Component {
       return <span>Error: {this.state.error.message}</span>
     }
     return (
-      <Table celled>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell collapsing>
-              <Button as={Link} to='admin/team'>New Team</Button>
-            </Table.HeaderCell>
-            <Table.HeaderCell>Team</Table.HeaderCell>
-            <Table.HeaderCell>Description</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
+      <div>
+        <Button as={Link} to='admin/team'>New Team</Button>
+        <Table celled>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Team</Table.HeaderCell>
+              <Table.HeaderCell>Participants</Table.HeaderCell>
+              <Table.HeaderCell>Excercises</Table.HeaderCell>
+              <Table.HeaderCell>Current Event Ends</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
 
-        <Table.Body>
-          {this.renderTeamRows()}
-        </Table.Body>
+          <Table.Body>
+            {this.renderTeamRows()}
+          </Table.Body>
 
-        <Table.Footer>
-          <Table.Row>
-            <Table.HeaderCell colSpan='3'>
-              <Menu floated='right' pagination>
-                <Menu.Item as='a' icon>
-                  <Icon name='left chevron' />
-                </Menu.Item>
-                <Menu.Item as='a'>1</Menu.Item>
-                <Menu.Item as='a'>2</Menu.Item>
-                <Menu.Item as='a'>3</Menu.Item>
-                <Menu.Item as='a'>4</Menu.Item>
-                <Menu.Item as='a' icon>
-                  <Icon name='right chevron' />
-                </Menu.Item>
-              </Menu>
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Footer>
-      </Table>
+          <Table.Footer>
+            <Table.Row>
+              <Table.HeaderCell colSpan='4'>
+                <Menu floated='right' pagination>
+                  <Menu.Item as='a' icon>
+                    <Icon name='left chevron' />
+                  </Menu.Item>
+                  <Menu.Item as='a'>1</Menu.Item>
+                  <Menu.Item as='a'>2</Menu.Item>
+                  <Menu.Item as='a'>3</Menu.Item>
+                  <Menu.Item as='a'>4</Menu.Item>
+                  <Menu.Item as='a' icon>
+                    <Icon name='right chevron' />
+                  </Menu.Item>
+                </Menu>
+              </Table.HeaderCell>
+            </Table.Row>
+          </Table.Footer>
+        </Table>
+      </div>
     )
   }
 }
