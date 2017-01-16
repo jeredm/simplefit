@@ -1,50 +1,49 @@
 import React, { Component, PropTypes } from 'react'
 import { Table, Menu, Icon, Button } from 'semantic-ui-react'
-import TeamRow from './TeamRow'
+import TeamMemberRow from './TeamMemberRow'
 import _ from 'lodash'
-import { Link } from 'react-router'
 
-class TeamTable extends Component {
+class TeamMembersTable extends Component {
   state = {
     loading: true,
     error: null,
-    teams: null,
+    teamMembers: null,
   }
 
   componentDidMount = () => {
-    this.getTeamData()
+    this.getTeamMembersData()
       .then(response => {
         this.setState({
           loading: false,
           error: null,
-          teams: response.results.data,
+          teamMembers: response.results.data,
         })
       })
       .catch(errors => {
         this.setState({
           loading: false,
           error: errors,
-          teams: null,
+          teamMembers: null,
         })
       })
   }
 
-  getTeamData = () => {
+  getTeamMembersData = () => {
     return (
       new Promise((resolve, reject) => {
-        this.props.getTeams()
+        this.props.getTeamMembers()
           .then(results => {resolve({ results })})
           .catch(err => reject({ err }))
       })
     )
   }
 
-  renderTeamRows = () => {
+  renderTeamMemberRows = () => {
     const rows = []
-    const teams = this.state.teams
-    _.each(teams, team => {
+    const teamMembers = this.state.teamMembers
+    _.each(teamMembers, teamMember => {
       rows.push(
-        <TeamRow team={team} key={team.name} />
+        <TeamMemberRow teamMember={teamMember} key={teamMember.name} />
       )
     })
     return rows
@@ -58,19 +57,18 @@ class TeamTable extends Component {
     }
     return (
       <div>
-        <Button as={Link} to='admin/team'>New Team</Button>
+        <Button>New Team Member</Button>
         <Table celled>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>Team</Table.HeaderCell>
-              <Table.HeaderCell>Participants</Table.HeaderCell>
-              <Table.HeaderCell>Exercises</Table.HeaderCell>
-              <Table.HeaderCell>Current Event Ends</Table.HeaderCell>
+              <Table.HeaderCell>Team Member</Table.HeaderCell>
+              <Table.HeaderCell>Weekly Exercises</Table.HeaderCell>
+              <Table.HeaderCell>Event Exercises</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
 
           <Table.Body>
-            {this.renderTeamRows()}
+            {this.renderTeamMemberRows()}
           </Table.Body>
 
           <Table.Footer>
@@ -97,8 +95,8 @@ class TeamTable extends Component {
   }
 }
 
-TeamTable.propTypes = {
-  getTeams: PropTypes.func.isRequired,
+TeamMembersTable.propTypes = {
+  getTeamMembers: PropTypes.func.isRequired,
 }
 
-export default TeamTable
+export default TeamMembersTable

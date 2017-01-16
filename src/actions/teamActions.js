@@ -17,3 +17,9 @@ export function getTeams() {
     return axios.get('/api/teams')
   }
 }
+
+export function getTeamMembers() {
+  return dispatch => {
+    return axios.get('/api/teammembers')
+  }
+}

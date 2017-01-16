@@ -9,14 +9,14 @@ class TeamRow extends Component {
     const { name, eventEndDt } = this.props.team
 
     // Default deep props
-    let { participants, excercises } = this.props.team
+    let { participants, exercises } = this.props.team
     if (_.isEmpty(participants)) participants = 0
-    if (_.isEmpty(excercises)) excercises = 0
+    if (_.isEmpty(exercises)) exercises = 0
 
     this.state = {
       name,
       participants,
-      excercises,
+      exercises,
       eventEndDt,
     }
   }
@@ -29,12 +29,12 @@ class TeamRow extends Component {
   }
 
   render() {
-    const { name, participants, excercises, eventEndDt } = this.state
+    const { name, participants, exercises, eventEndDt } = this.state
     return (
       <Table.Row>
         <Table.Cell><Link>{name}</Link></Table.Cell>
-        <Table.Cell><Link>{String(participants)} people</Link></Table.Cell>
-        <Table.Cell><Link>{String(excercises)} enabled</Link></Table.Cell>
+        <Table.Cell><Link to='admin/teammembers'>{String(participants)} people</Link></Table.Cell>
+        <Table.Cell><Link>{String(exercises)} enabled</Link></Table.Cell>
         <Table.Cell><Link>{this.buildDateLabel(eventEndDt)}</Link></Table.Cell>
       </Table.Row>
     )
@@ -45,7 +45,7 @@ TeamRow.propTypes = {
   team: PropTypes.shape({
     name: PropTypes.string.isRequired,
     participants: PropTypes.number,
-    excercises: PropTypes.number,
+    exercises: PropTypes.number,
     eventEndDt: PropTypes.instanceOf(Date),
   }).isRequired,
 }

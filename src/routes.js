@@ -7,6 +7,7 @@ import FitRecordView from './views/FitRecord/FitRecordView'
 import TeamView from './views/Team/TeamView'
 import AdminView from './views/Admin/AdminView'
 import AddTeamPanel from './views/Admin/components/AddTeamPanel'
+import TeamMembersPanel from './views/Admin/components/TeamMembersPanel'
 import PrizesView from './views/Prizes/PrizesView'
 
 export default (
@@ -17,6 +18,7 @@ export default (
     <Route path='team' component={TeamView} />
     <Route path='admin' component={AdminView} />
     <Route path='admin/team' component={AddTeamPanel} />
+    <Route path='admin/teammembers' component={TeamMembersPanel} />
     <Route path='prizes' component={PrizesView} />
   </Route>
 )
