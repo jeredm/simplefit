@@ -91,6 +91,12 @@ class AddTeamForm extends React.Component {
 
   render() {
     const { errors } = this.state
+    const prizes = [
+      { text: 'Quarterly', value: 'quarterly' },
+      { text: 'Monthly', value: 'monthly' },
+      { text: 'Weekly', value: 'weekly' },
+      { text: 'Annually', value: 'annually' },
+    ]
 
     return (
       <div>
@@ -102,11 +108,21 @@ class AddTeamForm extends React.Component {
             name='teamName'
             {...errors.teamName ? { error: true } : {}}
           />
+          <Form.Dropdown
+            name='prizeOptions'
+            label='Prize Options'
+            placeholder='When are prizes awarded?'
+            fluid multiple selection options={prizes}
+          />
           <Form.TextArea
             label='Team Rules'
-            placeholder='How long is each workout? How many workouts per week?'
+            placeholder='How long is each workout? What is required for each prize level?'
             name='teamDesc'
             {...errors.teamDesc ? { error: true } : {}}
+          />
+          <Form.Checkbox
+            label='Allow anybody to sign up for this team'
+            name='allowSignUp'
           />
           <Form.Group>
             <Button primary type='submit'>Submit</Button>
