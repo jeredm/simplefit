@@ -6,7 +6,7 @@ import { Link } from 'react-router'
 class TeamRow extends Component {
   constructor(props) {
     super(props)
-    const { name, eventEndDt } = this.props.team
+    const { teamId, teamName, eventEndDt } = this.props.team
 
     // Default deep props
     let { participants, exercises } = this.props.team
@@ -14,7 +14,8 @@ class TeamRow extends Component {
     if (_.isEmpty(exercises)) exercises = 0
 
     this.state = {
-      name,
+      teamId,
+      teamName,
       participants,
       exercises,
       eventEndDt,
@@ -29,10 +30,11 @@ class TeamRow extends Component {
   }
 
   render() {
-    const { name, participants, exercises, eventEndDt } = this.state
+    const { teamId, teamName, participants, exercises, eventEndDt } = this.state
     return (
       <Table.Row>
-        <Table.Cell><Link>{name}</Link></Table.Cell>
+        <Table.Cell><Link>{teamId}</Link></Table.Cell>
+        <Table.Cell><Link>{teamName}</Link></Table.Cell>
         <Table.Cell><Link to='admin/teammembers'>{String(participants)} people</Link></Table.Cell>
         <Table.Cell><Link>{String(exercises)} enabled</Link></Table.Cell>
         <Table.Cell><Link>{this.buildDateLabel(eventEndDt)}</Link></Table.Cell>
@@ -43,7 +45,8 @@ class TeamRow extends Component {
 
 TeamRow.propTypes = {
   team: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    teamId: PropTypes.string.isRequired,
+    teamName: PropTypes.string,
     participants: PropTypes.number,
     exercises: PropTypes.number,
     eventEndDt: PropTypes.instanceOf(Date),

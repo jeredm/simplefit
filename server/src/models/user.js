@@ -1,19 +1,19 @@
 import mongoose from 'mongoose'
 
-const teamMemberSchema = new mongoose.Schema({
-  name: {
+const userSchema = new mongoose.Schema({
+  userId: {
     type: String,
     required: true,
     index: { unique: true },
   },
-  userId: {
+  name: {
     type: String,
     required: true,
   },
-  teamId: {
+  email: {
     type: String,
     required: true,
   },
 })
 
-module.exports = mongoose.model('TeamMember', teamMemberSchema)
+module.exports = mongoose.model('User', userSchema)

@@ -4,20 +4,21 @@ import TeamModel from '../models/team'
 const router = express.Router()
 
 router.post('/', (req, res) => {
-  const { teamName, teamDesc, prizeOptions, allowSignUp } = req.body
+  const { teamId, teamName, teamDesc, prizeOptions, allowSignUp } = req.body
   const team = new TeamModel({
-    name: teamName,
+    teamId,
+    teamName,
     description: teamDesc,
     prizeOptions,
     allowSignUp,
   })
   team.save()
-    .then(user => res.json({ success: true }))
+    .then(() => res.json({ success: true }))
     .catch(err => res.status(500).json({ error: err }))
 })
 
-router.get('/:teamname', (req, res) => {
-  TeamModel.find({ name: req.params.teamname }, 'name description prizeOptions')
+router.get('/:teamId', (req, res) => {
+  TeamModel.find({ name: req.params.teamId }, 'teamId teamName description prizeOptions')
     .then(team => res.json({ team }))
     .catch(err => res.status(500).json({ error: err }))
 })

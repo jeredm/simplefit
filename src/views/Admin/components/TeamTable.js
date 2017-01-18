@@ -44,7 +44,7 @@ class TeamTable extends Component {
     const teams = this.state.teams
     _.each(teams, team => {
       rows.push(
-        <TeamRow team={team} key={team.name} />
+        <TeamRow team={team} key={team.teamId} />
       )
     })
     return rows
@@ -62,7 +62,8 @@ class TeamTable extends Component {
         <Table celled>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>Team</Table.HeaderCell>
+              <Table.HeaderCell>Team Id</Table.HeaderCell>
+              <Table.HeaderCell>Team Name</Table.HeaderCell>
               <Table.HeaderCell>Participants</Table.HeaderCell>
               <Table.HeaderCell>Exercises</Table.HeaderCell>
               <Table.HeaderCell>Current Event Ends</Table.HeaderCell>
@@ -75,7 +76,7 @@ class TeamTable extends Component {
 
           <Table.Footer>
             <Table.Row>
-              <Table.HeaderCell colSpan='4'>
+              <Table.HeaderCell colSpan='5'>
                 <Menu floated='right' pagination>
                   <Menu.Item as='a' icon>
                     <Icon name='left chevron' />

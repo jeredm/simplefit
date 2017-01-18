@@ -43,7 +43,7 @@ class AddTeamForm extends React.Component {
     return (
       new Promise((resolve, reject) => {
         this.validateInput(formData)
-          .then(() => { return this.checkNameExists(formData) })
+          .then(() => { return this.checkIdExists(formData) })
           .then(() => { return resolve(true) })
           .catch(err => { return reject(err) })
       })
@@ -54,6 +54,10 @@ class AddTeamForm extends React.Component {
     const errors = {}
     return (
       new Promise((resolve, reject) => {
+        if (_.isEmpty(data.teamId)) {
+          errors.teamId = 'Team Id is a required field'
+          reject(errors)
+        }
         if (_.isEmpty(data.teamName)) {
           errors.teamName = 'Team Name is a required field'
           reject(errors)
@@ -63,20 +67,20 @@ class AddTeamForm extends React.Component {
     )
   }
 
-  checkNameExists = (formData) => {
+  checkIdExists = (formData) => {
     const errors = {}
     return (
       new Promise((resolve, reject) => {
-        this.props.getTeam(formData.teamName)
+        this.props.getTeam(formData.teamId)
           .then(res => {
             if (!_.isEmpty(res.data.team)) {
-              errors.teamName = 'The team is already in use'
+              errors.teamId = 'The team id is already in use'
               return reject(errors)
             }
             return resolve(false)
           })
           .catch(err => {
-            errors.teamName = err.message
+            errors.teamId = err.message
             return reject(errors)
           })
       })
@@ -102,6 +106,12 @@ class AddTeamForm extends React.Component {
       <div>
         <Form onSubmit={this.handleSubmit}>
           <Header as='h1'>Create a Team</Header>
+          <Form.Input
+            label='Team Id'
+            placeholder='A unique team identifier'
+            name='teamId'
+            {...errors.teamId ? { error: true } : {}}
+          />
           <Form.Input
             label='Team Name'
             placeholder='A unique team name'
