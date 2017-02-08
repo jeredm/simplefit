@@ -11,6 +11,7 @@ const exerciseSchema = new mongoose.Schema({
     required: true,
   },
   description: String,
+  activityCnt: Number,
 })
 
 module.exports = mongoose.model('Exercise', exerciseSchema)

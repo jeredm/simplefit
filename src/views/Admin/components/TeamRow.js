@@ -36,7 +36,7 @@ class TeamRow extends Component {
         <Table.Cell><Link>{teamId}</Link></Table.Cell>
         <Table.Cell><Link>{teamName}</Link></Table.Cell>
         <Table.Cell><Link to='admin/teammembers'>{String(participants)} people</Link></Table.Cell>
-        <Table.Cell><Link>{String(exercises)} enabled</Link></Table.Cell>
+        <Table.Cell><Link to='admin/exercises'>{String(exercises)} enabled</Link></Table.Cell>
         <Table.Cell><Link>{this.buildDateLabel(eventEndDt)}</Link></Table.Cell>
       </Table.Row>
     )
