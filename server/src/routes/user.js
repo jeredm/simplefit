@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
     .catch(err => res.status(500).json({ error: err }))
 })
 
-router.get('/:teamId', (req, res) => {
+router.get('/:userId', (req, res) => {
   UserModel.find({ name: req.params.userId }, 'userId, name, email')
     .then(user => res.json({ user }))
     .catch(err => res.status(500).json({ error: err }))

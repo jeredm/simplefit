@@ -2,6 +2,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import team from './routes/team'
 import teams from './routes/teams'
+import prizes from './routes/prizes'
 import user from './routes/user'
 import exercise from './routes/exercise'
 import teamMembers from './routes/teamMembers'
@@ -19,6 +20,7 @@ mongoose.connection.on('error', () => {
 app.use(bodyParser.json())
 
 app.use('/api/team', team)
+app.use('/api/prizes', prizes)
 app.use('/api/teams', teams)
 app.use('/api/user', user)
 app.use('/api/exercise', exercise)
