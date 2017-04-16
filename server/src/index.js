@@ -1,10 +1,9 @@
 import express from 'express'
 import bodyParser from 'body-parser'
-import team from './routes/team'
 import teams from './routes/teams'
 import prizes from './routes/prizes'
-import user from './routes/user'
-import exercise from './routes/exercise'
+import users from './routes/users'
+import exercises from './routes/exercises'
 import teamMembers from './routes/teamMembers'
 import mongoose from 'mongoose'
 import config from './config'
@@ -19,11 +18,10 @@ mongoose.connection.on('error', () => {
 
 app.use(bodyParser.json())
 
-app.use('/api/team', team)
 app.use('/api/prizes', prizes)
 app.use('/api/teams', teams)
-app.use('/api/user', user)
-app.use('/api/exercise', exercise)
+app.use('/api/users', users)
+app.use('/api/exercises', exercises)
 app.use('/api/teammembers', teamMembers)
 
 // eslint-disable-next-line no-console
