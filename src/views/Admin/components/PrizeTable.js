@@ -32,7 +32,7 @@ class PrizeTable extends Component {
   getPrizeData = () => {
     return (
       new Promise((resolve, reject) => {
-        this.props.getTeams()
+        this.props.getPrizes()
           .then(results => {resolve({ results })})
           .catch(err => reject({ err }))
       })

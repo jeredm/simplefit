@@ -8,7 +8,7 @@ class PrizeRow extends Component {
     super(props)
     const { name } = this.props.prize
 
-    let { desc, points } this.props.prize
+    let { desc, points } = this.props.prize
     if (_.isEmpty(desc)) desc = ''
     if (_.isEmpty(points)) points = 0
 
