@@ -8,7 +8,7 @@ export function createPrize(prizeData) {
 
 export function getPrize(prizeName) {
   return dispatch => {
-    return axios.post(`/api/prizes/${prizeName}`)
+    return axios.get(`/api/prizes/${prizeName}`)
   }
 }
 
@@ -17,4 +17,3 @@ export function getPrizes() {
     return axios.get('/api/prizes')
   }
 }
-

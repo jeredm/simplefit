@@ -44,7 +44,7 @@ class PrizeTable extends Component {
     const prizes = this.state.prizes
     _.each(prizes, prize => {
       rows.push(
-        <PrizeRow prize={prize} key={prize.name} />
+        <PrizeRow prize={prize} key={prize.prizeName} />
       )
     })
     return rows

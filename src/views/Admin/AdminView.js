@@ -27,6 +27,7 @@ class AdminView extends Component {
 
 AdminView.propTypes = {
   getTeams: PropTypes.func.isRequired,
+  getPrizes: PropTypes.func.isRequired,
 }
 
 export default connect(null, { getTeams, getPrizes })(AdminView)

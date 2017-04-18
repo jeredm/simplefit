@@ -6,7 +6,7 @@ const prizeSchema = new mongoose.Schema({
     required: true,
     index: { unique: true },
   },
-  descrition: String,
+  description: String,
   points: Number,
 })
 
