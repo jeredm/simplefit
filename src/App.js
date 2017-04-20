@@ -1,23 +1,59 @@
 import React, { Component } from 'react'
 import './App.css'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Container } from 'semantic-ui-react'
 import { Link } from 'react-router'
 
 class App extends Component {
+  state = { activeItem: 'Home' }
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
   render() {
+    const { activeItem } = this.state
+
     return (
       <div className='App'>
-        <div>
+        <Container fluid>
           <Menu>
             <Menu.Item header>SimpleFit</Menu.Item>
-            <Menu.Item as={Link} to='/home' activeClassName='active' name='Home' />
-            <Menu.Item as={Link} to='/fitrecord' activeClassName='active' name='Fit Record' />
-            <Menu.Item as={Link} to='/team' activeClassName='active' name='Team' />
-            <Menu.Item as={Link} to='/admin' activeClassName='active' name='Admin' />
-            <Menu.Item as={Link} to='/prizes' activeClassName='active' name='Prizes' />
+            <Menu.Item
+              as={Link}
+              to='/home'
+              active={activeItem === 'Home'}
+              name='Home'
+              onClick={this.handleItemClick}
+            />
+            <Menu.Item
+              as={Link}
+              to='/fitrecord'
+              active={activeItem === 'Fit Record'}
+              name='Fit Record'
+              onClick={this.handleItemClick}
+            />
+            <Menu.Item
+              as={Link}
+              to='/team'
+              active={activeItem === 'Team'}
+              name='Team'
+              onClick={this.handleItemClick}
+            />
+            <Menu.Item
+              as={Link}
+              to='/admin'
+              active={activeItem === 'Admin'}
+              name='Admin'
+              onClick={this.handleItemClick}
+            />
+            <Menu.Item
+              as={Link}
+              to='/prizes'
+              active={activeItem === 'Prizes'}
+              name='Prizes'
+              onClick={this.handleItemClick}
+            />
           </Menu>
           {this.props.children}
-        </div>
+        </Container>
       </div>
     )
   }
