@@ -10,11 +10,11 @@ class App extends Component {
         <div>
           <Menu>
             <Menu.Item header>SimpleFit</Menu.Item>
-            <Menu.Item as={Link} to='home' activeClassName='active' name='Home' />
-            <Menu.Item as={Link} to='fitrecord' activeClassName='active' name='Fit Record' />
-            <Menu.Item as={Link} to='team' activeClassName='active' name='Team' />
-            <Menu.Item as={Link} to='admin' activeClassName='active' name='Admin' />
-            <Menu.Item as={Link} to='prizes' activeClassName='active' name='Prizes' />
+            <Menu.Item as={Link} to='/home' activeClassName='active' name='Home' />
+            <Menu.Item as={Link} to='/fitrecord' activeClassName='active' name='Fit Record' />
+            <Menu.Item as={Link} to='/team' activeClassName='active' name='Team' />
+            <Menu.Item as={Link} to='/admin' activeClassName='active' name='Admin' />
+            <Menu.Item as={Link} to='/prizes' activeClassName='active' name='Prizes' />
           </Menu>
           {this.props.children}
         </div>
